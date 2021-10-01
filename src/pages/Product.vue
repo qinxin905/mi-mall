@@ -1,10 +1,11 @@
 <template>
-  <div>主页-头部组件</div>
+  <div>产品页组件</div>
 </template>
 
 <script>
 export default {
-    name:'MainHeader'
+    name:'Product'
+
 }
 </script>
 

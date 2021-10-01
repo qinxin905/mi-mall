@@ -1,10 +1,10 @@
 <template>
-  <div>底部</div>
+  <div>主页-底部组件</div>
 </template>
 
 <script>
 export default {
-
+    name:'MainFooter'
 }
 </script>
 

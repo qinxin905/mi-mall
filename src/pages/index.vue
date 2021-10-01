@@ -1,10 +1,10 @@
 <template>
-  <div></div>
+  <div>Index组件</div>
 </template>
 
 <script>
 export default {
-    name:'index'
+    name:'Index'
 }
 </script>
 
