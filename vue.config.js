@@ -1,7 +1,7 @@
 module.exports={
     devServer:{
         proxy:{
-            'aqpi':{
+            'api1':{
                 target:'https://www.imooc.com',
                 changeOrigin:false,
                 pathRewrite:{'^/api':''} 
