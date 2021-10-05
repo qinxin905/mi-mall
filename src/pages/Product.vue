@@ -1,11 +1,10 @@
 <template>
-  <div>产品页组件</div>
+  <div>产品页</div>
 </template>
 
 <script>
 export default {
     name:'Product'
-
 }
 </script>
 
