@@ -439,6 +439,7 @@ export default {
   top:112px;
   background-color:#fff;
   transition: height 0.1s ease-in;
+  z-index: 3;
 
   .container{
       height: 230px;
@@ -503,5 +504,5 @@ export default {
     }
 
   }
-
+  
 </style>

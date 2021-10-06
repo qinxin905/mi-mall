@@ -20,11 +20,25 @@
       "unicode_decimal": 983417
     },
     {
+      "icon_id": "1360",
+      "name": "新浪微博",
+      "font_class": "xinlangweibo",
+      "unicode": "f01af",
+      "unicode_decimal": 983471
+    },
+    {
       "icon_id": "57361",
       "name": "天猫-包邮卡",
       "font_class": "tianmaobaoyouqia",
       "unicode": "f008a",
       "unicode_decimal": 983178
+    },
+    {
+      "icon_id": "77156",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "f0106",
+      "unicode_decimal": 983302
     },
     {
       "icon_id": "145725",
@@ -67,6 +81,13 @@
       "font_class": "youjiantou",
       "unicode": "e619",
       "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "791886",
+      "name": "会话",
+      "font_class": "huihua-copy",
+      "unicode": "e647",
+      "unicode_decimal": 58951
     },
     {
       "icon_id": "838048",
