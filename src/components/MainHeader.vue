@@ -10,7 +10,7 @@
         </div>
         <div class="topbar-userinfo">
           <a href="#" v-if='username'>{{username}}</a>
-            <a href="javascript:void(0)" v-if='!username' @click="login">登录</a>
+            <a href="/#/login" v-if='!username' @click="login">登录</a>
             <a href="#" v-if='!username'>注册</a>
             <a href="#" v-if='username'>我的订单</a>
         </div>
@@ -27,9 +27,9 @@
             </a>
           </div>
           <div class="header-menu"  >
-            <ul @mouseover="slideDown" @mouseout="slideUp">
-              <li  ><a href="#" id='J-01'>小米手机</a></li>
-              <li ><a href="#" id='J-02'>Redmi红米</a></li>
+            <ul>
+              <li @mouseover="addProduct('100012')" @mouseout="slideUp"  ><a href="#" id='J-01'>小米手机</a></li>
+              <li @mouseover="addProduct('100013')" @mouseout="slideUp"><a href="#" id='J-02'>Redmi红米</a></li>
               <li ><a href="#" id='J-03'>电视</a></li>
               <li ><a href="#" id='J-04'>笔记本</a></li>
               <li ><a href="#" id='J-05'>平板</a></li>
@@ -79,14 +79,7 @@
                   <dd class="price">{{item.price | filterPrice}}元起</dd>
                 </dl>
               </a>
-            </li>
-         
-            
-          
-         
-            
-           
-            
+            </li> 
           </ul>
 
       </div>
@@ -106,7 +99,6 @@ export default {
     name:'MainHeader',
     data(){
       return {
-        username:'',
         //搜索状态
         searchActive:{
             'search-hover':false,
@@ -119,8 +111,12 @@ export default {
             slideDown:false
         },
         productList:[]
-    
       }
+    },
+    computed:{
+        username(){
+          return this.$store.state.username;
+        }
     },
     methods: {
       login(){
@@ -134,6 +130,7 @@ export default {
                 'categoryId':id
               }
         }).then((result)=>{
+          
             if(result.list.length>=6){
               this.productList= result.list.slice(0,6);
             }else{
@@ -173,35 +170,21 @@ export default {
              window.sessionStorage.setItem('search',JSON.stringify(obj))
              this.searchTxt=''
       },
-      slideDown(e){
-        console.log(e.target)
-            switch (e.target.id){
-              case 'J-01':
-                this.productList=this.getProducts('100012');
-                break
-              case'J-02':
-               this.productList=this.getProducts('100013');
-               break
-               case 'J-03':
-                  this.productList=this.getProducts('100014');
-                  break;
-              default:
-                this.productList=[]
-                break;
-
-
-            }
-
+      addProduct(id){
+        this.getProducts(id);
+          this.slide['slideUp']=false;
+          this.slide['slideDown']=true;
+      },
+      slideDown(){
+ 
             this.slide['slideUp']=false;
             this.slide['slideDown']=true;
-          
-            
+                
       },
       slideUp(){
-        //  if(e.target.id){
+
             this.slide['slideUp']=true;
             this.slide['slideDown']=false;
-            // }
       },
 
       //去左右空格;
@@ -210,16 +193,6 @@ export default {
               }
     },
 
-    filters:{
-      filterPrice(value){
-          if(!value){
-            return '￥ 0.00'
-          }else{
-            return `￥${value}`
-          }
-      }
-    }
-    ,
     components:{
       Cart
     },

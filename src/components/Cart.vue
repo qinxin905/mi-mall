@@ -5,7 +5,7 @@
    @mouseout="removeCartCss"
    @click="gotoCart"
    >
-        <span class="iconfont icon-gouwucheman img-cart"></span>购物车<span>(0)</span>
+        <span class="iconfont icon-gouwucheman img-cart"></span>购物车<span>({{getCartSum}})</span>
         <div  class="menu-content" :class='menuShow'>购物车内容</div>
   </div>
 </template>
@@ -16,8 +16,14 @@ export default {
     data(){
       return {
           cartActive:'',
-          menuShow:''
+          menuShow:'',
+        
       }
+    },
+    computed:{
+       getCartSum(){
+          return this.$store.state.getCartSum 
+       }
     },
     methods: {
         addCartCss(){
