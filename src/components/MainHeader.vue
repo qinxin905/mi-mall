@@ -21,7 +21,7 @@
     <div class="site-header">
       <div class="container">
           <div class="header-logo">
-            <a href="#">
+            <a href="/#/">
               <span class="before iconfont icon-xiaomi"></span>
               <span class="after iconfont icon-fangzidichan"></span>
             </a>

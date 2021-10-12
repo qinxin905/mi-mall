@@ -11,7 +11,7 @@ export default {
   components: { },
   methods: {
     getuserName(){
-      this.$axios.get('user').then((result)=>{
+      this.$axios.get('user').then((result={})=>{
            this.$store.dispatch('saveName',result.username)
       }).catch(function(){
           console.log('用户没有登录')
@@ -19,7 +19,7 @@ export default {
      
     },
     getCartSum(){
-       this.$axios.get('/carts/products/sum').then((result)=>{
+       this.$axios.get('/carts/products/sum').then((result=0)=>{
            this.$store.dispatch('getCartSum',result)
       }).catch(function(){
           console.log('没有登录，无法获取购物车信息')

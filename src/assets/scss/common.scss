@@ -53,3 +53,10 @@
           margin-right:15px;
       }
   }
+
+  .clearfix::after{
+    contain: "";
+    display: block;
+    clear: both;
+
+  }

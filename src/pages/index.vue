@@ -3,14 +3,15 @@
     <!--弹窗组件开始 -->
     <model-dialog :showModel="showModel" 
           v-on:show-dialog="showDialog" 
-          :btnType=2 modeType='samll' 
+          :btnType=1 
+          modeType='samll' 
           modeBody='txt' 
           modeTitle="添加购物车"
-          sureText="加入购物车"
+          sureText="关闭"
           >
       <template v-slot:dialog>
         <div class="dialog-body">
-          弹窗的主体内容
+         商品添加成功！！
         </div>
       </template>
     </model-dialog>
@@ -129,12 +130,15 @@
                 </li>
 
                 <li v-for="(item,index) in productList" :key="index">
-                  <a :href="'/#/product/'+item.id">
+                  <a :href="'/#/products/'+item.id">
                     <span class="tag" :class="{'hot-tag':index==2,'new-tag':index==4,'recommend-tag':index==6}"></span>
                     <img v-lazy="item.mainImage" alt="">
                     <h3>{{item.name}}</h3>
                     <p>{{item.subtitle}}</p>
-                    <h4>{{item.price | filterPrice}}<span class="iconfont icon-gouwuchekong" @click.prevent="showDialog(true)"></span></h4>
+                    <h4>{{item.price | filterPrice}}
+                      <span class="iconfont icon-gouwuchekong" @click.prevent="addCart(item.id)">
+                      </span>
+                    </h4>
                   </a>
                 </li>
 
@@ -233,8 +237,28 @@ export default {
     },
     methods: {
       //显示弹窗
-        showDialog(bol){
-          this.showModel=bol;
+      showDialog(){
+        this.showModel=false
+      },
+        addCart(id){
+
+          this.$axios.post('/carts',{
+                productId:id,
+                selected: true
+            }).then((result)=>{
+                this.showModel=true;
+                this.$store.dispatch('getCartSum',result.cartTotalQuantity)
+                // this.$router.push('/cart')
+
+            },()=>{
+
+                alert("没有登录，请先登录");
+                this.$router.push('/login')
+            })
+         
+
+
+
         },
 
         showMenu(e){
